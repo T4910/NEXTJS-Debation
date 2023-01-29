@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/profile_styles.css">
+    <script>
+        const imageroute = '/images/<%= imgPath %>'
+    </script>
+    <script src="./upload_img.js" defer></script>
+    <!-- <script src="https://kit.fontawesome.com/24b8a6b9d6.js" crossorigin="anonymous"></script> -->
+    <title>Profile</title>
+</head>
+<body>
+    <div class="fillprf" id="fillprf" style="display: none;">
+        <div class="fillprf-content">
+            <div class="container-edit">
+                <button id="edit">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <h3>Edit profile</h3>
+            </div>
+            <form action="/fillprofile" method="POST" class="editform">
+                <div class="details">
+                    <div class="an-input">
+                        <label for="name">Username</label>
+                        <input type="text" name="name" id="name" value='<%= name %>'>
+                    </div>
+                    <div class="an-input">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" value='<%= email %>'>
+                    </div>
+                    <label for="descr" class="for-descr">Description</label>
+                    <textarea name="descr" id="desc" cols="30" rows="9" maxlength="250" placeholder="Describe yourself...."></textarea>
+                    <h2>Social links</h2>
+                    <% for (i = 0; i < socials_list.length; i++){ %>
+                        <div class="an-input">
+                            <label for='<%= socials_list[i].social %>'>
+                                <%= socials_list[i].social %>
+                            </label>
+                            <input type="text" name=<%= socials_list[i].social %> id=<%= socials_list[i].social %> value=<%= socials_list[i].link %>>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="submission">
+                    <input type="submit" value="Change">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="showpicdisplay">
+        <div class="holder">
+            <img src=/images/<%= imgPath %> id="previewer" class="avatar" alt="default">
+            <div class="upload_photo">
+                <form action="/upload" enctype="multipart/form-data" method="POST">
+                    <label for="image" class="input-img">
+                        Change...
+                        <input type="file" name="prfimg" id="image"  accept="image/png, image/jpg, image/jpeg" value="Change...">
+                        <input type="hidden" name="id" value=<%= id %>>
+                    </label>
+                    <input type="submit" id="savepreviewedimg" value="Save" style="display: none;">
+                </form>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="navigator">
+            <div>
+                <h2>
+                    Debation
+                </h2>
+            </div>
+            <a href="/">
+                <div>home</div>
+            </a>
+            <a href="/profile">
+                <div>profile</div>
+            </a>
+            <div class="menu" id="menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="search">
+            <form action="#">
+                <input type="text" name="search" placeholder="Search">
+                <input type="submit">
+            </form>
+        </div>
+    </nav>
+    <div class="arrange">
+        <div class="profile">
+            <div class="profile_summary">
+                <div class="main_profile">
+                    <img src=/images/<%= imgPath %> class="avatar" id="profile_image" alt="default">
+                    <div>
+                        <h3><%= name %></h3>
+                        <p><%= email %></p>
+                        <p id='win-count'>Win count: <span>1</span></p>
+                    </div>
+                </div>
+                <div class="description">
+                    <p>
+                        <%= description %><!--  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque laudantium asperiores vitae nisi. Nobis ipsam cupiditate quas dolore, vero laboriosam nemo distinctio, sed vitae officia excepturi sequi nesciunt deserunt voluptatibus. dsdnmb -->
+                    </p>
+                </div>
+                <button id="edit" class="profile-edit-btn">Edit Profile...</button>
+            </div>
+            <div class="socials">
+                <div class="links">
+                    <% for (i = 0; i < socials_list.length; i++){ %>
+                        <a href="<%= socials_list[i].link %>">
+                            <button>
+                                <% if (socials_list[i].social == 'website'){%>
+                                    <i class="fa-solid fa-globe"></i>
+                                    <p><%= socials_list[i].social %></p>
+                                <% } else { %>
+                                    <i class="fa-brands fa-<%= socials_list[i].social %>"></i>
+                                    <p><%= socials_list[i].social %></p>
+                                <%}%>
+                            </button>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="recent_debates">
+                <h4>Recent Debates</h4>
+                <div class="debates">
+                    <% for(let i = debates.length-1; i >= 0; i--){%>
+
+                    <% if (debates[i].timeend == null) {%>
+                        <div class="debate-ongoing">
+                    <%}else{%>
+                        <div class="debate-ended">
+                    <%}%>
+                    <h3><%= debates[i].topic %></h3>
+                    <p><%= debates[i].description %></p>
+                    <p class="mini"><%= debates[i].role %></p>
+                    <p class="mini"><%= debates[i].timestart %></p>
+                    -
+                    <p class="mini">
+                        <% if (debates[i].timeend == null) {%>
+                            ongoing
+                        <%}else{%>
+                         <%= debates[i].timeend %>
+                        <%}%>
+                    </p>
+
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <footer>
+        &copy; 2022 Copyright: Emmanuel.com
+     </footer>
+</body>
+</html>

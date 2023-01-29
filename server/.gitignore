@@ -1,0 +1,9 @@
+node_modules
+public/images
+.env
+public/music
+localhost-key.pem
+localhost.pem
+.vscode
+.env
+yarn.lock

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/login_styles.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="welcome-back">
+        <h1>Debation</h1>
+            <p>Create account</p>   
+    </div>
+    <% if (messages.usertaken) { %>
+        <%= messages.usertaken %>
+    <% } %>
+    <% if (messages.no_username) { %>
+        <%= messages.no_username %>
+    <% } %>
+    <% if (messages.no_password) { %>
+        <%= messages.no_password %>
+    <% } %>
+    <% if (messages.no_email) { %>
+        <%= messages.no_email %>
+    <% } %>
+    <div class="loginform">
+        <form action="/register" method="POST">
+            <input type="text" name="username" id="username" placeholder="Username" autocomplete required>
+            <input type="email" name="email" id="email" placeholder="Email" autocomplete required>
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete required>
+            <input type="submit" id="submit" value="register">
+        </form>        
+    </div>
+    <div class="not-login">
+        <div>
+            <p>Have an account?</p>
+            <a href="/login"><button>Sign in</button></a>
+        </div>
+        <div>
+            <p>Want to join a private meeting?</p>
+            <a href="#"><button>Join private room</button></a>    
+        </div>
+    </div>
+    <footer>
+        &copy; 2022 Copyright: Emmanuel.com
+     </footer>
+</body>
+</html>
