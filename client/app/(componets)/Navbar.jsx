@@ -28,7 +28,7 @@ export default function Navbar(){
             <Link href="/">Home</Link>
             <DropdownList list={nav_dropdown_contents}/>
             <Link href="/signings/login">Sign in</Link>
-            <Link href="/signings/register">Sign out</Link>
+            <Link href="/signings/register">Sign up</Link>
         </nav>
     )
 }
