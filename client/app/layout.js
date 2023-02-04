@@ -1,5 +1,6 @@
 import Footer from './(componets)/Footer';
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

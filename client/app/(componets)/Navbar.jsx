@@ -7,8 +7,8 @@ export default function Navbar(){
         {
           dropdownname: 'About',
           dropdownlist: [
-            {name: 'Company', url: '/about/about-company', id:1},
-            {name: 'About Developer', url: '/about/about-developer', id:2}
+            {name: 'Company', url: 'info/about/about-company', id:1},
+            {name: 'About Developer', url: 'info/about/about-developer', id:2}
           ]
         },
         {

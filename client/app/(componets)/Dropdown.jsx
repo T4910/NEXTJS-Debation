@@ -10,15 +10,13 @@ const Dropdown = ({main, list}) => {
         <div className="dropdown">
             <div className="dropdown-header">{main}</div>
             <ul>
-                {list.map((item, index) => {
-                    return (
-                        <li key={item.id} id={item.id}>
-                            <Link href={item.url}>
-                                {item.name}
-                            </Link>
-                        </li>
-                    ) 
-                })}
+                {list.map((item) => 
+                    <li key={item.id}>
+                        <Link href={item.url}>
+                            {item.name}
+                        </Link>
+                    </li>
+                )}
             </ul>
         </div>
 )

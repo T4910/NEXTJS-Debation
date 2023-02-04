@@ -10,11 +10,3 @@ export default function register() {
       </>
     )
   }
-  
-  register.getLayout = function getLayout(register) {
-    return (
-      <Layout>
-        <NestedLayout>{register}</NestedLayout>
-      </Layout>
-    )
-  }
