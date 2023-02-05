@@ -1,7 +1,7 @@
-import React from 'react'
+'use client'
 
-export default function RoomConfigs() {
+export default function RoomConfigs({active}) {
   return (
-    <div>RoomConfigs element</div>
+    <div style={{display: active}}>RoomConfigs element</div>
   )
 }
