@@ -9,7 +9,10 @@ export default function MakeOrJoinRoom() {
   return (
     <div>
         <button onClick={() => setRoomConfigsVisibility(!RoomConfigsVisibility)}>Make room</button>
-        <RoomConfigurations active={(RoomConfigsVisibility) ? 'block' : 'none'}/>
+        <RoomConfigurations 
+        active={RoomConfigsVisibility}
+        toggleFunc={setRoomConfigsVisibility}
+        />
         <JoinRoom />
     </div>
   )
