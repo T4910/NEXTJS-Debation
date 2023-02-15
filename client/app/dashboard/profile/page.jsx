@@ -1,6 +1,6 @@
-import UserPicAndDesc from '../../(componets)/UserPicAndDesc'
-import SocialLinks from '../../(componets)/UserSocialLinks'
-import UserVisitedDebates from '../../(componets)/UserVisitedDebates.jsx'
+import UserPicAndDesc from '../../(componets)/ProfileComponents/UserPicAndDesc'
+import SocialLinks from '../../(componets)/ProfileComponents/UserSocialLinks'
+import UserVisitedDebates from '../../(componets)/ProfileComponents/UserVisitedDebates.jsx'
 
 export default function profile() {
   return (

@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import RoomConfigurations from '../(componets)/RoomConfigs'
-import JoinRoom from '../(componets)/Joinroom'
+import RoomConfigurations from '../RoomConfigurationComponents/RoomConfigs'
+import JoinRoom from './Joinroom'
 
 export default function MakeOrJoinRoom() {
     let [RoomConfigsVisibility, setRoomConfigsVisibility] = React.useState(false)

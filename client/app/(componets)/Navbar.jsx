@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import DropdownList from './DropdownList';
+import DropdownList from './HelperComponents/DropdownList';
 
 
 export default function Navbar(){

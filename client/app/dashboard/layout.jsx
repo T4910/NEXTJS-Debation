@@ -1,4 +1,4 @@
-import DashboardNavBar from '../(componets)/DashboardNavBar'
+import DashboardNavBar from '../(componets)/DashboardComponents/DashboardNavBar'
 
 export default function DashboardLayout({ children }) {
     return (
