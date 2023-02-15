@@ -1,0 +1,5 @@
+client/.next
+cleint/next.config.js
+cleint/yarn.lock
+cleint/node_modules
+client/app/page.jsx
