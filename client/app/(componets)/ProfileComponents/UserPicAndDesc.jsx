@@ -1,7 +1,11 @@
-import React from 'react'
+import  UserDetails from './UserDetails'
+import  UserDesc from './UserDescription'
 
 export default function UserPicAndDesc() {
   return (
-    <div>UserPicAndDesc element</div>
+    <div>
+      <UserDetails />
+      <UserDesc />
+    </div>
   )
 }
