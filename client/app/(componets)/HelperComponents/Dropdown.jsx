@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 
@@ -6,10 +7,15 @@ const styles = {
 }
 
 const Dropdown = ({main, list}) => {
+    let [ShowDropdown, setShowDropdown] = React.useState(false)
+
     return (
         <div className="dropdown">
-            <div className="dropdown-header">{main}</div>
-            <ul>
+            <div 
+            onClick={() => setShowDropdown(!ShowDropdown)}
+            className="dropdown-header">{main}*</div>
+
+            <ul style={{display: (ShowDropdown) ? 'block' : 'none'}}>
                 {list.map((item) => 
                     <li key={item.id}>
                         <Link href={item.url}>
