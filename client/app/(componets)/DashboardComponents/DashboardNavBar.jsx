@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import LogOut from './logOut'
 
 export default function DashboardNavBar() {
   return (
@@ -7,7 +8,7 @@ export default function DashboardNavBar() {
         <ul>
             <li><Link href="/dashboard">Dashboard</Link></li>
             <li><Link href="/dashboard/profile">Profile</Link></li>
-            <li><Link href="/">Log Out</Link></li>
+            <li><LogOut/></li>
         </ul>
     </nav>
   )

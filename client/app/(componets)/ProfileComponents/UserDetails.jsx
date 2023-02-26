@@ -6,7 +6,7 @@ export default function UserDetails() {
         <img src="" alt="Profile picture" />
         <div>
             <h3>
-                <i>...Usernamvme</i>
+                <i>...Username</i>
             </h3>
             <p>...Email</p>
             <p id="win-count">

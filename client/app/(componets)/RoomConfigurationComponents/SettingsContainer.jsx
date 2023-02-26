@@ -1,10 +1,14 @@
 import Configs from './Configs'
 import EnableSpeakerGroups from './EnableSpeakersGroups'
 
+function configureRoom(){
+  console.log('configuring room')
+}
+
 export default function SettingsContainer() {
   return (
     <div>
-        <div className="settings-container">
+        <form className="settings-container" onSubmit={configureRoom}>
           <Configs 
           header={'Topic'} 
           content={
@@ -48,8 +52,8 @@ export default function SettingsContainer() {
           content={
             <EnableSpeakerGroups />
           }/>
-        </div>
 
+      </form>
     </div>
   )
 }
