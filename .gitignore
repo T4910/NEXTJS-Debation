@@ -1,6 +1,6 @@
 /.next
 /node_modules
-next.config
+next.config.js
 TODO
 yarn.lock
 .env
