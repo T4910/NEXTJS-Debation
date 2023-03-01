@@ -1,8 +1,8 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import UserDB from '../../../database/userschema'
+import DBconnect from '../../../database/DBconnect'
 import bcrypt from 'bcryptjs'
-import mongoose from 'mongoose'
 
 
 
@@ -12,7 +12,7 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials, req) {
-        mongoose.connect('mongodb://127.0.0.1/usersdb', () => {console.log('db connected')}, err => console.log(err))
+        DBconnect()
 
         const {username, password} = credentials;
         

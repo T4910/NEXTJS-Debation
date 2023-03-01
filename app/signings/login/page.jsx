@@ -17,10 +17,8 @@ export default function login() {
       redirect: true,
       username: text,
       password: password,
-      callbackUrl: 'http://localhost:3000/dashboard'
+      callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/dashboard`
     })
-
-    console.log(data)
   }
 
   return (

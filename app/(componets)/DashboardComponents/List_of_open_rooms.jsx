@@ -2,7 +2,7 @@ import React from 'react'
 import RoomListChild from './RoomListElement'
 
 async function availableRooms(){
-  const res = await fetch('http://127.0.0.1:3000/api/availableRooms', {next: {revalidate: 10}})
+  const res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/availableRooms`, {next: {revalidate: 10}})
   let { rooms: roomsAvailable } = await res.json()
 
   return roomsAvailable
