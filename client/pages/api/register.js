@@ -1,5 +1,7 @@
-import User from '../../userschema'
-import mongoose from 'mongoose'
+import UserDB from '../../database/userschema'
+import DBconnect from '../../database/DBconnect'
+
+DBconnect()
 
 export default async function handler(rq, rs) {
     if(!rq.method === 'POST') return {data: 'This is a POST handler'}

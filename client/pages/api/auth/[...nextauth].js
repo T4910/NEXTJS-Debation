@@ -1,7 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import UserDB from '../../../database/userschema'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import mongoose from 'mongoose'
 
 
@@ -24,12 +24,8 @@ export const authOptions = {
                 
         const neededDetails = {
           email: {
-            username: user.username,
-            email: user.email,
-            image: user.imgPath,
-            wins: user.wins
+            ID: user._id
           },
-          j: 'k'
         }
         
         return neededDetails

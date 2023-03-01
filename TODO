@@ -1,0 +1,30 @@
+
+Todo:
+  ☐ Item
+  
+  ☐ # Enable login page to talk with backend server for user authentification
+  ☐ # Prevent user from entering illegal URLs i.e URLs they aren't meant to get too
+  
+  ☐ # Enable ability to register new users
+  
+  ☐ # Add search bar for list of rooms
+  ☐ # Add functionality to search bar in order to search for rooms
+  
+  ☐ # Show live-time list of avaliable rooms
+  
+  ☐ # Populate the front page with proper related components and wordings
+  
+  ☐ # Make loading components for image/detail card in profile route
+  ☐ # Make profile detail card: Image, Username, Email, Social-links and score count
+  ☐ # Connect the profile detail card to back-end server
+  
+  ☐ # Add functionality to the joinroom component
+  ☐ # Connect settings-container to backend server
+  
+  ☐ # Add email API for the send-invite functionality
+  ☐ # Configure send-invite functionality
+  
+  ☐ # Add logout functionality
+  
+  ☐ # Social section outside of debates 
+  

@@ -1,4 +1,4 @@
-import  UserDetails from './UserDetails'
+import  UserDetails from './UserDetailsServerComponent'
 import  UserDesc from './UserDescription'
 
 export default function UserPicAndDesc() {
