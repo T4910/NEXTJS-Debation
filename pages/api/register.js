@@ -1,21 +1,25 @@
 import UserDB from '../../database/userschema'
 import DBconnect from '../../database/DBconnect'
+import bcrypt from "bcryptjs"
 
-DBconnect()
+export default async function handler(rq, rs){
 
-export default async function handler(rq, rs) {
+  await DBconnect()
     if(!rq.method === 'POST') return {data: 'This is a POST handler'}
 
-    // mongoose.connect('mongodb://127.0.0.1/usersdb', () => {console.log('db connected')}, err => console.log(err))
-
-    console.log(rq.body)
     const {name, email, password} = rq.body;
+ console.log("Users request params", rq.body) 
 
-    // const user = await User.create({
-    //     name,
-    //     email,
-    //     password
-    // })
+  let hashedpass = await bcrypt.hash(password, 10)
 
-    rs.status(201).json({name: 'kk'})
+  console.log(hashedpass)
+    const user = await UserDB.create({
+      name: name,
+       email: email,
+        password: hashedpass
+     })
+
+  console.log("\nUser adfed to the database", user)
+
+    rs.status(201).json({f: "working", ...user})
 }
