@@ -1,5 +1,5 @@
 import mongoose, { Schema, model } from 'mongoose'
-//import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 
 const Userschema = new Schema({
     username: String,
@@ -8,7 +8,7 @@ const Userschema = new Schema({
     datejoined: {
         type: Date,
         immutable: true,
-        default: () => Date.now()
+        default: () => Date.now
     },
     imgPath: String,
     socials:{
@@ -22,11 +22,11 @@ const Userschema = new Schema({
     wins: Number,
     debates: Array
 })
-/*
+
 Userschema.pre('save', async (next) => {
     if(!this.isModified('password')) next()
     
     this.password = await bcrypt.hash(this.password, 10)
-})*/
+})
 
 export default mongoose.models.User || model('User', Userschema)

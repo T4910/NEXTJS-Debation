@@ -1,7 +1,4 @@
 import Navbar from './(componets)/Navbar';
-import db from '../database/DBconnect';
-
-db()
 export default function Page() {
     return (
         <>

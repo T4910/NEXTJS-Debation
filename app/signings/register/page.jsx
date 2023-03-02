@@ -7,7 +7,7 @@ import {useState} from 'react'
 export default function register() {
     const [text, setText] = useState('a')
     const [email, setEmail] = useState('s@gmail.com')
-    const [password, setPassword] = useState('a')
+    const [password, setPassword] = useState('ddddd')
 
 
     async function registerNewUser(e){
@@ -25,7 +25,7 @@ export default function register() {
         }) 
       })
     
-      console.log(await data.json())
+      console.log(data)
     }
     
     return (
