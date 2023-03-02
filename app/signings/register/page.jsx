@@ -1,33 +1,37 @@
 'use client'
 import {useState} from 'react'
 
+// To directly log in new user, just use the signIn() function that 
+// next-auth provides to authenticate the user and it will automatically
+//  redirect the new user to the dashboard or the page or new users
+
+async function registerNewUser(e){
+  e.preventDefault();
+  
+  const data = await fetch('/api/register',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify({
+      name: text, 
+      email: email, 
+      password: password
+    }) 
+  }).json()
+
+  console.log(data)
+  return data
+}
+
 
 
 
 export default function register() {
-    const [text, setText] = useState('a')
-    const [email, setEmail] = useState('s@gmail.com')
-    const [password, setPassword] = useState('ddddd')
+    const [text, setText] = useState('Assa')
+    const [email, setEmail] = useState('sasdf@gmail.com')
+    const [password, setPassword] = useState('a')
 
-
-    async function registerNewUser(e){
-      e.preventDefault();
-      
-      const data = await fetch('/api/register',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify({
-          name: text, 
-          email: email, 
-          password: password
-        }) 
-      })
-    
-      console.log(data)
-    }
-    
     return (
       <>
           <form onSubmit={registerNewUser}>
