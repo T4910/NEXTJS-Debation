@@ -23,5 +23,6 @@ export default async function handler(rq, rs) {
         password: await bcrypt.hash(password, 10) // hashed password
     })
 
+    console.log('New user made', ID)
     return rs.status(201).json({message: 'User made', user: ID})
 }
