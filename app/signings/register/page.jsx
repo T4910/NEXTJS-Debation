@@ -1,15 +1,29 @@
 'use client'
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import {signIn} from 'next-auth/react'
+import UsernameFree from '../../(componets)/UsernameAvailability'
 
-// To directly log in new user, just use the signIn() function that 
-// next-auth provides to authenticate the user and it will automatically
-//  redirect the new user to the dashboard or the page or new users
+async function checkUsernameAvailability(username, available_variable_setstate_function) {
+  let rs = await fetch('/api/register',{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json; charset=utf-8'},
+      body: JSON.stringify({
+        name: username, 
+        username_available_route: true
+      }) 
+    })
+  const {available} = await rs.json()
+  available_variable_setstate_function(available)
+  return 
+}
 
 export default function register() {
     const [text, setText] = useState('Assa')
     const [email, setEmail] = useState('sasdf@gmail.com')
     const [password, setPassword] = useState('a')
+    const [USERNAMEavailable, setUSERNAMEavailable] = useState()
+    
+    useEffect(() => {checkUsernameAvailability(text, setUSERNAMEavailable)}, [text])
 
     async function registerNewUser(e){
       e.preventDefault();
@@ -46,6 +60,10 @@ export default function register() {
 
     return (
       <>
+          <UsernameFree 
+            username={text}
+            availability={USERNAMEavailable}
+          />
           <form onSubmit={registerNewUser}>
               <input 
                 type='text' 

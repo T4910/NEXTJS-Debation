@@ -11,10 +11,16 @@ async function availablity(username){
 }
 
 export default async function handler(rq, rs) {
-    if(!rq.method === 'POST') return {data: 'This is a POST handler'}
+    if(!rq.method === 'POST') return rs.status(401).json({data: 'This is a POST handler'})
+    
     const {name, email, password} = rq.body;
-
     let available = await availablity(name)
+
+    // Confirming if username_avaliability route
+    if(rq.body?.username_available_route) return rs.status(201).json({available: available})
+    
+    
+
     if(available === false) return rs.status(201).json({message: 'Sorry... Username taken'})
     
     const {_id: ID} = await UserDB.create({
