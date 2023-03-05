@@ -1,9 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
-import {signIn} from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import UsernameFree from '../../(componets)/UsernameAvailability'
 
-async function checkUsernameAvailability(username, available_variable_setstate_function) {
+async function checkUsernameAvailability(username, username_available_setstate_function) {
+  username_available_setstate_function('loading')
   let rs = await fetch('/api/register',{
       method: 'POST',
       headers: {'Content-Type': 'application/json; charset=utf-8'},
@@ -12,22 +13,24 @@ async function checkUsernameAvailability(username, available_variable_setstate_f
         username_available_route: true
       }) 
     })
-  const {available} = await rs.json()
-  available_variable_setstate_function(available)
+  const {available: username_available} = await rs.json()
+  username_available_setstate_function(username_available ? 'free' : 'taken')
   return 
 }
+
 
 export default function register() {
     const [text, setText] = useState('Assa')
     const [email, setEmail] = useState('sasdf@gmail.com')
     const [password, setPassword] = useState('a')
-    const [USERNAMEavailable, setUSERNAMEavailable] = useState()
+    const [USERNAMEavailable, setUSERNAMEavailable] = useState('loading')
     
     useEffect(() => {checkUsernameAvailability(text, setUSERNAMEavailable)}, [text])
 
     async function registerNewUser(e){
       e.preventDefault();
-      
+      if(text === '' || email === '' || password === '') return setUSERNAMEavailable('warn')
+
       // Register API
       const data = await fetch('/api/register',{
         method: 'POST',
@@ -40,10 +43,9 @@ export default function register() {
           password: password
         }) 
       })
-      
-      let res = await data.json()
-    
+
       // Ensuring user got registersed
+      const res = await data.json()
       if(res.message !== 'User made') return console.log('ERROR REGISTERING...')
     
       // Signing User 
@@ -53,14 +55,11 @@ export default function register() {
         password: password,
         callbackUrl: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/dashboard`
       })
-    
-      console.log(data)
-      return data
     }
 
     return (
       <>
-          <UsernameFree 
+          <UsernameFree
             username={text}
             availability={USERNAMEavailable}
           />
