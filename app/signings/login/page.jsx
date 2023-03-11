@@ -1,14 +1,10 @@
 'use client'
-import Link from "next/link";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-
-
 
 export default function login() {
   const [text, setText] = useState('')
   const [password, setPassword] = useState('')
-
 
   async function loginUser(e){
     e.preventDefault();

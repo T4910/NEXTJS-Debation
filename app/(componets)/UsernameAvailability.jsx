@@ -1,7 +1,3 @@
-'use client'
-import {useEffect} from 'react'
-
-
 export default function UsernameAvailability({username, availability}) {
     if (availability === 'warn') return <div>PLS fill up required feilds</div> 
     if (username === '') return 
