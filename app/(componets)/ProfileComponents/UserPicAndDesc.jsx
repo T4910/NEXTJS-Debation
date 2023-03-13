@@ -1,11 +1,11 @@
-import  UserDetails from './UserDetails'
+import  UserDetailsCard from './UserDetails'
 import  UserDesc from './UserDescription'
 
-export default function UserPicAndDesc({ID}) {
+export default function UserPicAndDesc({description, ...otherDetails}) {
   return (
     <div>
-      <UserDetails ID={ID}/>
-      <UserDesc />
+      <UserDetailsCard {...otherDetails}/>
+      <UserDesc desc={description}/>
     </div>
   )
 }

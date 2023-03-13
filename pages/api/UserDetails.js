@@ -9,13 +9,15 @@ export default async function handler(rq, rs) {
     const {ID} = rq.body
 
     if(!ID) return rs.status(401).json({})
-    const {username, email, wins, imgPath} = await UserDB.findOne({_id: ID})
+    const {username, email, wins, imgPath, description, debates, socials} = await UserDB.findOne({_id: ID})
 
     
     rs.status(201).json({
         username: username,
         email: email,
         wins: wins,
-        image: imgPath
+        image: imgPath,
+        description: 'lllll',
+        debates: debates
     })
 }

@@ -1,27 +1,6 @@
-'use client'
-import {useState, useRef, useEffect} from 'react'
-import {useSession} from 'next-auth/react'
 import Image from 'next/image'
 
-
-async function getUserDetails(ID, setdata){
-  let res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/UserDetails`, {
-    method: 'POST', 
-    headers: {'Content-Type': 'application/json; charset=utf-8'},
-    body: JSON.stringify({ID: ID}) 
-  })
-  let userdata = await res.json()
-  console.log(userdata)
-  setdata(userdata)
-  return 
-} 
-
-export default function UserDetails({ID}) {
-  let UserId = ID?.user.email.ID;
-  let [{username, email, wins, image}, setUsedata] = useState({});
-  useEffect(() => {if(ID) getUserDetails(UserId, setUsedata)}, [ID]);
-
-
+export default function UserDetails({username, email, wins}) {
   return (
     <div className="UserDetails" style={{backgroundColor: 'blue'}}>
     <Image 
