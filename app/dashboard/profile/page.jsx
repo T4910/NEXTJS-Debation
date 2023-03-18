@@ -31,7 +31,7 @@ export default function profile() {
     <div>
        <UserPicAndDesc {...others}/>
        <SocialLinks />
-       <UserVisitedDebates debates={debates}/>
+       <UserVisitedDebates debates={debates} ID={UserID}/>
     </div>
   )
 }
