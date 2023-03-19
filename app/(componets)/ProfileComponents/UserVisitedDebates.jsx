@@ -14,7 +14,8 @@ export default function UserVisitedDebates({ID, debates}) {
     let res = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/UserDetails`, {
       method: 'POST', 
       headers: {'Content-Type': 'application/json; charset=utf-8'},
-      body: JSON.stringify({ID: ID, visitedDebates: {req_no: 15, current_no: showndebates.length}}) 
+      body: JSON.stringify({ID: ID, visitedDebates: {req_no: 15, current_no: showndebates.length}}), 
+      cache: 'no-store'
     })
     let newdebates = await res.json()
     newdebates.debatesFinished && setMoreDebatesBTN(false)
