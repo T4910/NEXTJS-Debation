@@ -20,17 +20,17 @@ async function getUserDetails(ID, setdata){
 
 export default function profile() {
   let {data: session} = useSession()
-
   let UserID = session?.user.email.ID
   let [UserInfo, setUserInfo] = useState({})
+  let [socialElement, setSocialElement] = useState(false)
   useEffect(() => {if(session) getUserDetails(UserID, setUserInfo)}, [session]);
 
 
-  let {debates, ...others} = UserInfo
+  let {debates, socials, ...others} = {...UserInfo, setSocialElement}
   return (
     <div>
        <UserPicAndDesc {...others}/>
-       <SocialLinks />
+       {socialElement && <SocialLinks socials={socials} socialElement={setSocialElement}/>}
        <UserVisitedDebates debates={debates} ID={UserID}/>
     </div>
   )

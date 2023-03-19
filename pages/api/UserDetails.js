@@ -13,7 +13,7 @@ export default async function handler(rq, rs) {
         let {req_no, current_no} = rq.body.visitedDebates
         let [{debates}] = await UserDB.find({_id: ID})
         let reqDebates = debates.slice(-(req_no + current_no), -(current_no)).reverse()
-        console.log(`${debates.length - (req_no + current_no)} debates left to see.`)
+        // console.log(`${debates.length - (req_no + current_no)} debates left to see.`)
         return rs.status(200).json({
             reqDebates: reqDebates,
             debatesFinished: (req_no + current_no >= debates.length) ? true : false
@@ -29,6 +29,7 @@ export default async function handler(rq, rs) {
         wins: wins,
         image: imgPath,
         description: description,
+        socials: socials,
         debates: debates.slice(-15).reverse()
     })
 }

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function UserDetails({username, email, wins}) {
+export default function UserDetails({username, email, wins, setSocialElement}) {
   return (
     <div className="UserDetails" style={{backgroundColor: 'blue'}}>
     <Image 
@@ -17,6 +17,7 @@ export default function UserDetails({username, email, wins}) {
       <p id="win-count">
         Win count: <span>{(wins || wins === 0) ? wins : 'loading...'}</span>
       </p>
+      {username && <button onClick={() => {setSocialElement(true)}}>Contacts</button>}
     </div>
   </div>
   )
