@@ -23,7 +23,7 @@ export default function UserVisitedDebates({ID, debates}) {
     return 
   }
 
-  console.log('Currently debates being shown:',showndebates.map(({timestart}) => timestart))
+  // console.log('Currently debates being shown:',showndebates.map(({timestart}) => timestart))
 
   return (
     <div>
