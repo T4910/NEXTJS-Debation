@@ -1,16 +1,24 @@
 'use client'
-
 import InviteSection from './InviteSection';
-import React from 'react';
-import Link from 'next/link'
+import {useState} from 'react';
+import {useRouter} from 'next/navigation'
+import {v4} from 'uuid'
+
 
 export default function InitiateButtonContainer() {
-    let [InviteVisibility, setInviteVisibility] = React.useState(false)
+  const [InviteVisibility, setInviteVisibility] = useState(false)
+  const router = useRouter()
+  const roomID = v4()
+
+  function InitiateRoom(){
+    router.push(`/rooms/${roomID}`)
+  }
+
   return (
     <div>
         <InviteSection active={(InviteVisibility) ? 'block' : 'none'} />
         <button onClick={() => setInviteVisibility(!InviteVisibility)}>Invite</button>
-        <Link href="rooms">Start room</Link>
+        <button onClick={InitiateRoom}>Start room</button>
     </div>
   )
 }
